@@ -27,7 +27,7 @@ function CreateUser() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:4000/v1/users/register', {
+            const response = await fetch('https://backend-noutube.vercel.app/v1/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

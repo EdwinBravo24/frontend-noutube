@@ -10,7 +10,7 @@ const UserHome = () => {
   useEffect(() => {
     const obtenerArchivos = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/v1/archivos/muro", {
+        const { data } = await axios.get("https://backend-noutube.vercel.app/v1/archivos/muro", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setArchivos(data.archivos);
@@ -27,7 +27,7 @@ const UserHome = () => {
     formData.append("archivo", archivo);
     formData.append("titulo", titulo);
     try {
-      await axios.post("http://localhost:4000/v1/archivos/subir", formData, {
+      await axios.post("https://backend-noutube.vercel.app/v1/archivos/subir", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Archivo subido exitosamente");
@@ -111,7 +111,7 @@ const eliminarArchivo = async (id) => {
   const token = localStorage.getItem("token");
   if (window.confirm("¿Seguro que quieres eliminar este archivo?")) {
     try {
-      await axios.delete(`http://localhost:4000/v1/archivos/eliminar/${id}`, {
+      await axios.delete(`https://backend-noutube.vercel.app/v1/archivos/eliminar/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Archivo eliminado correctamente");
