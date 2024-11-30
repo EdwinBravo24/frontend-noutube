@@ -1,0 +1,37 @@
+.container {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.header button {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.upload-section,
+.files-section {
+    margin-bottom: 20px;
+}
+
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
