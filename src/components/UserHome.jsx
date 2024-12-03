@@ -12,6 +12,7 @@ const UserHome = () => {
       try {
         const { data } = await axios.get("https://backend-noutube.vercel.app/v1/archivos/muro", {
           headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true // Añadido para CORS
         });
         setArchivos(data.archivos);
       } catch (error) {
@@ -20,7 +21,7 @@ const UserHome = () => {
     };
     obtenerArchivos();
   }, [token]);
-
+  
   const handleSubirArchivo = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -29,6 +30,7 @@ const UserHome = () => {
     try {
       await axios.post("https://backend-noutube.vercel.app/v1/archivos/subir", formData, {
         headers: { Authorization: `Bearer ${token}` },
+        withCredentials: true // Añadido para CORS
       });
       alert("Archivo subido exitosamente");
       setArchivo(null);

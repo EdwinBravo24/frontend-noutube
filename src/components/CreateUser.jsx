@@ -27,28 +27,29 @@ function CreateUser() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://backend-noutube.vercel.app/v1/users/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                alert('Usuario registrado exitosamente');
-                navigate('/');
-            } else {
-                alert(data.message);
-            }
+          const response = await fetch("https://backend-noutube.vercel.app/v1/users/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+            mode: "cors", // CORS habilitado
+            credentials: "include" // Enviar cookies si es necesario
+          });
+      
+          const data = await response.json();
+          if (response.ok) {
+            alert("Usuario registrado exitosamente");
+            navigate("/");
+          } else {
+            alert(data.message);
+          }
         } catch (error) {
-            console.error('Error:', error);
-            alert('Error en el registro');
+          console.error("Error:", error);
+          alert("Error en el registro");
         }
-    };
-
+      };
+      
     return (
         <form onSubmit={handleSubmit} className="create-user-form">
             <h1>Crear Usuario</h1>

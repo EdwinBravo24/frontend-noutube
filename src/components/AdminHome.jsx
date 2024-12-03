@@ -11,25 +11,22 @@ const AdminHome = () => {
         console.error("Token no encontrado.");
         return;
       }
-
+  
       try {
         const { data } = await axios.get("https://backend-noutube.vercel.app/v1/archivos/general", {
           headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true // Añadido para CORS
         });
-        console.log("Archivos obtenidos:", data.archivos);  // Verifica los datos aquí
+        console.log("Archivos obtenidos:", data.archivos);
         setArchivos(data.archivos || []);
       } catch (error) {
-        if (error.response) {
-          console.error("Error al obtener los archivos generales:", error.response.data);
-        } else {
-          console.error("Error de conexión:", error.message);
-        }
+        console.error("Error al obtener los archivos generales:", error.response?.data || error.message);
       }
     };
-
+  
     obtenerArchivosGenerales();
   }, [token]);
-
+  
   const renderArchivo = (archivo) => {
     const ext = archivo.nombreOriginal.split(".").pop().toLowerCase();
 
